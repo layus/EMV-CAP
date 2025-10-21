@@ -10,8 +10,7 @@ Examples of EMV-CAP calculators:
 
 ## Debian
 
-* `sudo apt install libpcsclite-dev`
-* `sudo pip install -r requirements.txt`
+* `sudo apt install libpcsclite-dev uv`
 
 ## Mac OSX
 
