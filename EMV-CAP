@@ -170,14 +170,18 @@ def MyConnect(reader_match=None, debug=False):
 
 def myTransmit(connection, CAPDU, debug=False, maskpin=True,
                force_nodata=False):
+    # Import protocol constants from smartcard
+    from smartcard.CardConnection import CardConnection
+    
     # In T=0 mode, add P3=00 if there is no P3
-    if connection.getProtocol() == connection.T0_protocol:
+    protocol = connection.getProtocol()
+    if protocol == CardConnection.T0_protocol:
         if (len(CAPDU) / 2) <= 4:
             CAPDU += "00"
     # In T=1 mode, add Le=00 when we expect data
     # We try to guess if the command expects data (default) or not
     # but you can use arg force_nodata to tell cmd doesn't expect data in resp
-    elif connection.getProtocol() == connection.T1_protocol:
+    elif protocol == CardConnection.T1_protocol:
         if force_nodata:
             pass
         # PinVerify, no data expected
