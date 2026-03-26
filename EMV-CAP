@@ -5,7 +5,7 @@
 # dependencies = [
 #     "argparse",
 #     "pycryptodome",
-#     "pyscard",
+#     "pyscard>=2.3.1",
 # ]
 # ///
 
